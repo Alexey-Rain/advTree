@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        .tree-tools {
+            text-align: left;
+            width: 27px;
+            cursor: default;
+            padding: 0px 2px;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .tree-expand-collapse-img-btn-collapse{
+            cursor: pointer;
+            display: inline-block;
+            width:16px;
+            height:16px;
+        }
+        .tree-expand-collapse-img-btn{
+            cursor: pointer;
+            display: inline-block;
+            width:20px;
+            height:20px;
+            transition: all 0.2s;
+        }
+        .tree-add-el-inroot-img-btn {
+            cursor: pointer;
+            display: inline-block;
+            width:20px;
+            height:20px;
+        }
+        .import-xml {
+            text-align: left;
+            width: fit-content;
+            cursor: default;
+            padding: 0px 2px;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .import-xml-img-btn{
+            cursor: pointer;
+            display: inline-block;
+            width:22px;
+            height:22px;
+        }
+        .node-img-btn{
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            top: -2px;
+            width:18px;
+            height:18px;
+            transition: all 0.2s;
+        }
+        .tree-node-left-no-child {
+            text-align: right;
+            vertical-align: baseline;
+            width: 24px;
+            cursor: default;
+            padding: 0px 2px;
+            user-select: none;
+            border-radius: 3px 0px 0px 3px;
+        }
+        .tree-node-icon {
+            text-align: right;
+            width: 24px;
+            cursor: default;
+            padding: 2px 3px;
+            user-select: none;
+            vertical-align: baseline;
+        }
+        .tree-node-name {
+            text-align: left;
+            cursor: default;
+            padding: 2px 4px;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .tree-node-row:hover {
+            background-color: #EBECEE;
+            border-radius: 3px;
+        }
+        .img-btn-node {
+            cursor: pointer;
+            position: relative;
+            top: -3px;
+            display: inline-block;
+            width:18px;
+            height:18px;
+        }
+        .img-btn-edit {
+            cursor: pointer;
+            position: relative;
+            top: -3px;
+            display: inline-block;
+            width:18px;
+            height:18px;
+        }
+        .tree-node-id {
+            text-align: right;
+            cursor: default;
+            padding: 2px 4px;
+            -ms-user-select: none;
+            user-select: none;
+            border-radius: 0px 3px 3px 0px;
+        }
+        #btn-clear-search:after {
+            cursor: pointer;
+            position: relative;
+            content: '';
+            display: block;
+            top: 8px;
+            left: -32px;
+            width: 24px;
+            height: 24px;
+            background: url({{ asset('/images/Delete2grey.png') }}) no-repeat center center;
+            background-size: 80%;
+            border-radius: 3px;
+            user-select: none;
+        }
+        .container {
+            display: contents;
+            align-items: center;
+            width: 100%;
+        }
+        .node-box{
+            padding: 1px 7px;
+        }
+        .node-box-selected{
+            border-radius: 3px;
+            background-color: #0075ff;
+            padding: 1px 7px;
+            color: white;
+            font-weight: 500;
+        }
+
+    </style>
+
+
+
+    <div class="col" style="margin: 10px auto">
+        {#  {{ component('NodeSearch', { max: 5 }) }} #}
+    </div>
+
+    {# {{ dump(treeArr) }} #}
+
+
+
+    {# RandomNumber
+<div>
+    {{ component('RandomNumber', { max: 5 }) }}
+</div>
+    #}
+
+
+    {#  <script type="module" src='{{ asset('js/advTreeSrv.js') }}'></script> #}
+{% endblock %}
+

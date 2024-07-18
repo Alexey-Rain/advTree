@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+<row>
+  <id>3</id>
+  <name>Транспорт</name>
+  <pid>0</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>4</id>
+  <name>Мотоциклы</name>
+  <pid>3</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>2</id>
+  <name>Для офиса</name>
+  <pid>5</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>5</id>
+  <name>Бытовая техника</name>
+  <pid>0</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>6</id>
+  <name>Электроника</name>
+  <pid>0</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>7</id>
+  <name>Смартфоны</name>
+  <pid>6</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>8</id>
+  <name>Телевизоры</name>
+  <pid>6</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>9</id>
+  <name>Для дома</name>
+  <pid>5</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>10</id>
+  <name>Для дачи</name>
+  <pid>5</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>11</id>
+  <name>Для кухни</name>
+  <pid>9</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>12</id>
+  <name>Для ванной</name>
+  <pid>9</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>13</id>
+  <name>Пылесос</name>
+  <pid>9</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>14</id>
+  <name>Для комнат</name>
+  <pid>9</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>15</id>
+  <name>Микроволновка</name>
+  <pid>11</pid>
+  <status>0</status>
+</row>
+<row>
+  <id>16</id>
+  <name>Холодильник</name>
+  <pid>11</pid>
+  <status>0</status>
+</row>
+</data>

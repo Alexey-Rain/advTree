@@ -1,0 +1,234 @@
+{% macro tree(items) %}
+    {% if items %}
+        {% for i in items %}
+            {# Категория #}
+            {% if i['child']|length > 0 %}
+                <div class="accordion-item" style="border-style: none;">
+                    <form class="accordion-header" id="panelsStayOpen-heading-{{ i['id'] }}" data-elid="{{ i['id'] }}" style="width: 100%">
+                        <div class="tree-node-row" data-elid="{{ i['id'] }}">
+                            <div class="tree-node-icon">
+                                <img    class="node-img-btn collapsed"
+                                        id="node_img_btn_{{ i['id'] }}"
+                                        data-elid="{{ i['id'] }}"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapse-{{ i['id'] }}"
+                                        aria-expanded="false"
+                                        title='Развернуть / Свернуть'
+                                        aria-controls="panelsStayOpen-collapse-{{ i['id'] }}"
+                                        src="{{ asset('/images/arrow.png') }}" alt="">
+                            </div>
+                            <div class="tree-node-icon"
+                                style="text-align: center; width: 30px">
+                                <img    class="img-btn-node"
+                                        id="img-btn_folder_{{ i['id'] }}"
+                                        type="button"
+                                        style="display: inline-block;"
+                                        title='Есть подчинённые элементы'
+                                        src="{{ asset('/images/folder-document.png') }}" alt="">
+                                <img    class="img-btn-node"
+                                        id="img-btn_add-node_{{ i['id'] }}"
+                                        data-elid="{{ i['id'] }}"
+                                        type="button"
+                                        title='Добавить подчинённый элемент'
+                                        style="display: none;"
+                                        src="{{ asset('/images/Add2.png') }}" alt="">
+                            </div>
+                            <div class="tree-node-name">
+                                <input required type="text"
+                                       pattern="^[0-9a-zA-Zа-яА-ЯЁё \-]+$"
+                                       class="form-control-box-edit-node"
+                                       id="box_edit-node_{{ i['id'] }}"
+                                       value="{{ i['name'] }}"
+                                       data-elid="{{ i['id'] }}"
+                                       data-error-message="Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы"
+                                       title='Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы'
+                                       onFocus="this.select()"
+                                       style="display: none; height: 24px; width: auto" >
+                                <label class="node-box"
+                                       id='node-box-{{ i['id'] }}'
+                                       data-elid="{{ i['id'] }}"
+                                       title='Наименование элемента'
+                                       style="display: inline-block" >{{ i['name'] }}</label>
+                                <img   class="img-btn-edit"
+                                       id="img-btn_edit-node_{{ i['id'] }}"
+                                       data-elid="{{ i['id'] }}"
+                                       title='Изменить наименование элемента'
+                                       type="button"
+                                       style="display: none; margin-left: 10px"
+                                       src="{{ asset('/images/Edit.png') }}" alt="">
+                                <img   class="img-btn-node"
+                                       id="img-btn-del-node_{{ i['id'] }}"
+                                       data-elid="{{ i['id'] }}"
+                                       title='Удалить элемент'
+                                       type="button"
+                                       style="display: none; margin-left: 10px"
+                                       src="{{ asset('/images/Delete2.png') }}" alt="">
+                            </div>
+                            <div class="tree-node-id" data-elid="{{ i['id'] }}" title='Идентификатор элемента'
+                                 style="order: 999;  margin-left: auto;">
+                                <span>{{ i['id'] }}</span>
+                            </div>
+                        </div>
+                    </form>
+                    {# Следующий уровень #}
+                    <div id="panelsStayOpen-collapse-{{ i['id'] }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading-{{ i['id'] }}">
+                        <div class="accordion-body" style="visibility: visible; padding: 0px 0px 0px 40px">
+                            {{  _self.tree(i['child']) }}
+                        </div>
+                    </div>
+                </div>
+            {# Элемент #}
+            {% else %}
+                <div class="accordion-item" style="border-style: none;">
+                    <form class="accordion-header" id="panelsStayOpen-heading-{{ i['id'] }} " data-elid="{{ i['id'] }}" style="width: 100%">
+                        <div class="tree-node-row" data-elid="{{ i['id'] }}">
+                            <div class="tree-node-left-no-child"></div>
+                            <div class="tree-node-icon"
+                                style=" text-align: center; width: 30px">
+                                <img    class="img-btn-node"
+                                        id="img-btn_folder_{{ i['id'] }}"
+                                        type="button"
+                                        style="display: inline-block;"
+                                        title='Подчинённых элементов нет'
+                                        src="{{ asset('/images/folder.png') }}" alt="">
+                                <img    class="img-btn-node"
+                                        id="img-btn_add-node_{{ i['id'] }}"
+                                        data-elid="{{ i['id'] }}"
+                                        type="button"
+                                        title='Добавить подчинённый элемент'
+                                        style="display: none;"
+                                        src="{{ asset('/images/Add2.png') }}" alt="">
+                            </div>
+                            <div class="tree-node-name">
+                                <input  required type="text"
+                                        pattern="^[0-9a-zA-Zа-яА-ЯЁё \-]+$"
+                                        class="form-control-box-edit-node"
+                                        id="box_edit-node_{{ i['id'] }}"
+                                        value="{{ i['name'] }}"
+                                        data-elid="{{ i['id'] }}"
+                                        data-error-message="Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы"
+                                        title='Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы'
+                                        onFocus="this.select()"
+                                        style="display: none; height: 24px; width: auto"
+                                >
+                                <label  class="node-box"
+                                        id='node-box-{{ i['id'] }}'
+                                        data-elid="{{ i['id'] }}"
+                                        style="display: inline-block"
+                                        title='Наименование элемента'>{{ i['name'] }}</label>
+                                <img    class="img-btn-edit"
+                                        id="img-btn_edit-node_{{ i['id'] }}"
+                                        data-elid="{{ i['id'] }}"
+                                        title='Изменить наименование элемента'
+                                        type="button"
+                                        style="display: none; margin-left: 10px"
+                                        src="{{ asset('/images/Edit.png') }}" alt="">
+                                <img    class="img-btn-node"
+                                        id="img-btn-del-node_{{ i['id'] }}"
+                                        data-elid="{{ i['id'] }}"
+                                        type="button"
+                                        title='Удалить элемент'
+                                        style="display: none; margin-left: 10px"
+                                        src="{{ asset('/images/Delete2.png') }}" alt="">
+                            </div>
+                            <div class="tree-node-id" data-elid="{{ i['id'] }}" title='Идентификатор элемента'
+                                 style="order: 999;  margin-left: auto;">
+                                <span>{{ i['id'] }}</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+<div {{ attributes }} class="p-3 border bg-light" id="twig-companent">
+    {# Поиск #}
+    <div {{ stimulus_controller('modal-form') }} class="row" style="display: flex; padding-left: 10px; padding-right: 10px; margin-bottom: 10px">
+        <div class="container" style="width: 100%; margin: 0; padding: 0;">
+            <label for="input-search"></label><input type="text"
+                                                     class="form-control"
+                                                     id="input-search"
+                                                     data-model="debounce(300)|query"
+                                                     placeholder="Введите текст для поиска..."
+                                                     value=""
+                                                     style="min-width: 180px; padding-left: 12px; padding-right: 42px;">
+            <i class="btn-image" id="btn-clear-search" style="visibility: hidden; position: relative; width: 0"></i>
+            <button id="btn_action"
+                    data-action="live#action"
+                    data-live-action-param="debounce(300)|save"
+                    style="display:none"></button>
+            <button id="btn_show_modal"
+                    data-action="modal-form#openModal"
+                    style="display:none"></button>
+        </div>
+        <script type="module" src='{{ asset('js/advTreeSrv.js') }}'></script>
+        {{ include('modal_form/ModalDialog.html.twig') }}
+    </div>
+    {# Настройки поиска #}
+    <div class="row" style="justify-content: left; display: flex; flex-flow: row wrap; padding-left: 10px; padding-right: 10px; margin-bottom: 5px">
+        <div class="col" style="flex: none;padding-left: 0px;padding-bottom: 10px; padding-right: 20px; width: min-content;">
+            <label style="width: max-content">
+                <input type="checkbox" class="checkbox" id="chk-find-name" data-model="find_name_on">
+                Поиск по названию
+            </label>
+        </div>
+        <div class="col" style="flex: none;padding-left: 0px; padding-right: 20px;padding-bottom: 10px;width: min-content;">
+            <label style="width: max-content">
+                <input type="checkbox" class="checkbox" id="chk-find-id" data-model="find_id_on">
+                Поиск по ID
+            </label>
+        </div>
+        <div class="col" style="flex: none;padding-left: 0px;padding-bottom: 10px;width: min-content;">
+            <label style="width: max-content">
+                <input type="checkbox" class="checkbox" id="chk-find-ignorecase" data-model="find_ignorecase">
+                Не учитывать регистр
+            </label>
+        </div>
+    </div>
+    {# Дерево #}
+    <div class="accordion" id="accordionPanelsStayOpen">
+        <div class="accordion-item" style="border-style: none;">
+            {# Шапка #}
+            <table class="accordion-header" id="panelsTools" style="width: 100%">
+                <tr>
+                    <td class="tree-tools" >
+                        <img    class="tree-expand-collapse-img-btn-collapse"
+                                data-bs-toggle="tooltip" data-bs-html="true" title="Развернуть / свернуть все элементы списка"
+                                id="tree-expand-collapse-img-btn"
+                                type="button"
+                                src="{{ asset('/images/expand-collapse-arrows.png') }}" alt="">
+                    </td>
+                    <td class="tree-tools" >
+                        <img    class="tree-add-el-inroot-img-btn"
+                                data-bs-toggle="tooltip" data-bs-html="true" title="Вставить новый элемент в корневой список"
+                                id="tree-add-el-inroot-img-btn"
+                                type="button"
+                                src="{{ asset('/images/Add2.png') }}" alt="">
+                    </td>
+                    <td class="import-xml" style="text-align: end">
+                        <input type="file" id="filedialog" accept="text/xml" name="xml_file" style="display:none"/>
+                        <img    class="import-xml-img-btn"
+                                id="import-xml-img-btn"
+                                type="button"
+                                data-bs-toggle="tooltip" data-bs-html="true" title="Импортировать список из файла XML&#013;!!!Текущий список будет удалён !!!"
+                                src="{{ asset('/images/importXML.png') }}" alt="">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {# Иерархический список  #}
+        {{ _self.tree(this.getList) }}
+
+    </div>
+    <div id="twig-data"
+         style="display:none"
+         data-list="{{ this.getList|serialize(format = 'json') }}"
+         data-fulllist="{{ this.getFullList|serialize(format = 'json') }}"
+         data-flatlist="{{ this.getFlatList|serialize(format = 'json') }}"
+         data-fullflatlist="{{ this.getFullFlatList|serialize(format = 'json') }}"
+    ></div>
+    <button id="btn-twig-data" style="display:none" data-action="live#$render" data-live-action-param="debounce(300)|save"></button>
+
+</div>

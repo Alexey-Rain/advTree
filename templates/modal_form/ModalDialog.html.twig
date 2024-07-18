@@ -1,0 +1,133 @@
+<div
+        class="modal fade"
+        tabindex="-1"
+        aria-hidden="true"
+        data-modal-form-target="modal"
+>
+    <div class="modal-dialog" id="modal-dialog-del-nodes">
+        <div class="modal-content" style="background-color: #fffbbb">
+            <div class="modal-header" style="background-color: red">
+                <h6 class="modal-title" style="color: white">!!! Требуется подтверждение !!!</h6>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="align-content: center;">
+                <span id="modal-dialog-del-nodes-name" style="text-align: center; display: block; color: red; font-weight: 500"></span>
+                <br>
+                <span style="text-align: center; display: block; color: red; font-weight: 600; font-size: large">У выбранного элемента есть подчинённые элементы !!!</span>
+                <br>
+                <span style="text-align: center; display: block;">Нажмите <b>&#60; Удалить &#62;</b> если требуется удалить только выбранный элемент  <br>
+                (подчинённые элементы будут перемещены в корневую папку) <br><br>
+                Нажмите <b>&#60; Удалить всё &#62;</b> если хотите удалить выбранный элемент и все подчинённые элементы</span>
+            </div>
+            <div class="modal-footer" style="border: none">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Отмена
+                </button>
+                <button id='modal_btn_delete' type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                    Удалить
+                </button>
+                <button id='modal_btn_deleteall' type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                    Удалить всё
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-dialog" id="modal-dialog-del-one-node">
+        <div class="modal-content" style="background-color: #fffbbb">
+            <div class="modal-header" style="background-color: red">
+                <h6 class="modal-title" style="color: white">!!! Требуется подтверждение !!!</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="align-content: center;">
+                <span id="modal-dialog-del-one-node-name" style="text-align: center; display: block; color: red; font-weight: 500"></span>
+                <span style="text-align: center; display: block;">Пожалуйста, подтвердите удаление элемента</span>
+            </div>
+            <div class="modal-footer" style="border: none">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Отмена
+                </button>
+                <button id='modal_btn_delete-one-node' type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                    Удалить
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-dialog" id="modal-dialog-add-new-node">
+        <div class="modal-content" style="background-color: #fffbbb">
+            <div class="modal-header" style="background-color: #4da4ea">
+                <h6 class="modal-title" style="color: white">Новый элемент</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id='modal_frm_new_node' style="width: 100%; align-content: center;">
+                <div class="modal-body" style="align-content: center;">
+                    <div class="row" style="display: flex; padding-left: 10px; padding-right: 10px; margin-bottom: 10px">
+                        <div class="container" style="width: 100%; margin: 0; padding: 0;">
+                            <label id="label-id" for="input-name">ID: 100</label>
+                            <input required type="text"
+                                   pattern="^[0-9a-zA-Zа-яА-ЯЁё \-]+$"
+                                   data-error-message="Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы"
+                                   title='Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы'
+                                   class="form-control"
+                                   id="input-name-new-node"
+                                   placeholder="Введите имя нового элемента..."
+                                   value=""
+                                   style="width: 100%; min-width: 180px; padding-left: 12px; padding-right: 42px;"
+                            >
+                        </div>
+                        <button id="input-name-validate" style="display: none"></button>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border: none">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Отмена
+                    </button>
+                    <button id='modal_btn_new_node' type="button" class="btn btn-primary" >
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-dialog" id="modal-dialog-add-new-subnode">
+        <div class="modal-content" style="background-color: #fffbbb">
+            <div class="modal-header" style="background-color: #4da4ea">
+                <h6 class="modal-title" style="color: white">Новый элемент</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id='modal_frm_new_subnode' style="width: 100%; align-content: center;">
+                <div class="modal-body" style="align-content: center;">
+                    <div class="row" style="display: flex; padding-left: 10px; padding-right: 10px; margin-bottom: 10px">
+                        <div class="container" style="width: 100%; margin: 0; padding: 0;">
+                            <div style="width: 100%; padding: 5px 5px; display: flex; flex-flow: row wrap;">
+                                <label id="label-id" for="input-name" >ID: 100</label>
+                                <label id="label-pid" for="input-name" style="order: 999;  margin-left: auto;">Категория: ""</label>
+                            </div>
+                            <input required type="text"
+                                   pattern="^[0-9a-zA-Zа-яА-ЯЁё \-]+$"
+                                   data-error-message="Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы"
+                                   title='Разрешены символы латиницы, кириллицы, знаки дефиса и пробелы'
+                                   class="form-control"
+                                   id="input-name-new-subnode"
+                                   placeholder="Введите имя нового элемента..."
+                                   value=""
+                                   style="width: 100%; min-width: 180px; padding-left: 12px; padding-right: 42px;"
+                            >
+                        </div>
+                        <button id="input-name-validate" style="display: none"></button>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border: none">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Отмена
+                    </button>
+                    <button id='modal_btn_new_subnode' type="button" class="btn btn-primary" >
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

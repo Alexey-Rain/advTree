@@ -48,12 +48,12 @@
             cursor: pointer;
             display: inline-block;
             position: relative;
-            top: -2px;
-            width:18px;
-            height:18px;
+            width:20px;
+            height:20px;
             transition: all 0.2s;
         }
         .tree-node-left-no-child {
+            display: inline-block;
             text-align: right;
             vertical-align: baseline;
             width: 24px;
@@ -63,10 +63,11 @@
             border-radius: 3px 0px 0px 3px;
         }
         .tree-node-icon {
+            display: inline-block;
             text-align: right;
             width: 24px;
             cursor: default;
-            padding: 2px 3px;
+            padding: 1px 1px;
             user-select: none;
             vertical-align: baseline;
         }
@@ -77,17 +78,22 @@
             -ms-user-select: none;
             user-select: none;
         }
+        .tree-node-row {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            padding: 0px 5px 0px 0px;
+            border-radius: 3px;
+        }
         .tree-node-row:hover {
             background-color: #EBECEE;
-            border-radius: 3px;
         }
         .img-btn-node {
             cursor: pointer;
             position: relative;
-            top: -3px;
             display: inline-block;
-            width:18px;
-            height:18px;
+            width:20px;
+            height:20px;
         }
         .img-btn-edit {
             cursor: pointer;
@@ -134,26 +140,39 @@
             color: white;
             font-weight: 500;
         }
+        .form-control-box-edit-node{
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: var(--bs-body-bg);
+            background-clip: padding-box;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            border-radius: var(--bs-border-radius);
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+        .form-control-box-edit-node:focus {
+            color: var(--bs-body-color);
+            background-color: var(--bs-body-bg);
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.05rem rgba(13, 110, 253, 86)
+        }
+
 
     </style>
 
-
-
     <div class="col" style="margin: 10px auto">
-        {#  {{ component('NodeSearch', { max: 5 }) }} #}
+        {{ component('NodeSearch', { max: 5 }) }}
     </div>
+
+
 
     {# {{ dump(treeArr) }} #}
 
 
-
-    {# RandomNumber
-<div>
-    {{ component('RandomNumber', { max: 5 }) }}
-</div>
-    #}
-
-
-    {#  <script type="module" src='{{ asset('js/advTreeSrv.js') }}'></script> #}
 {% endblock %}
 

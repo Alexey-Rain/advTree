@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Node
 {
     #[ORM\Id]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(length: 255)]
+    private ?string $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -22,12 +22,12 @@ class Node
     private ?string $status = null;
 
     /**
-     * @param int|null $id
+     * @param string|null $id
      * @param string|null $name
      * @param string|null $pid
      * @param string|null $status
      */
-    public function __construct(?int $id, ?string $name, ?string $pid, ?string $status)
+    public function __construct(?string $id, ?string $name, ?string $pid, ?string $status)
     {
         $this->id = $id;
         $this->name = $name;
@@ -35,7 +35,7 @@ class Node
         $this->status = $status;
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
